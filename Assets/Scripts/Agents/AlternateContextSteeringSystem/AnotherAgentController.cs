@@ -268,7 +268,7 @@ public class AnotherAgentController : MonoBehaviour
                     interestMap[dir] += metric.GetScore() * metric.weight;
                 }
             }
-            Debug.Log(directions);
+          //  Debug.Log(directions);
         
             //Object focused metric logic
             foreach (var obj in objects)
