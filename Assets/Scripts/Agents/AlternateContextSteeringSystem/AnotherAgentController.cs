@@ -24,15 +24,14 @@ public class AnotherAgentController : MonoBehaviour
     public bool makeObjectsGoThrough = false;
     GameObject terrain;
     
-    private GameObject[] objs;
+    private GameObject[] objs = new GameObject[0];
     private float stuckTimer;
 
     private Dictionary<Vector3,int > visitedPositions = new Dictionary<Vector3, int>();
     private Vector3 movementDirection = Vector3.forward;
     private void Start()
     {
-        objs = UnityEngine.Object.FindObjectsOfType<GameObject>();
-
+        objs = FindAllActiveGameObjects().ToArray();
         if (!makeObjectsGoThrough)
         {
 
@@ -142,9 +141,10 @@ public class AnotherAgentController : MonoBehaviour
                 //visitedPositions.Add(transform.position);
             timePassed += Time.deltaTime;
             // Debug.Log(timePassed % 2f);
-            UpdateFieldOfView();
             if (timePassed >= 2f)
             {
+                UpdateFieldOfView();
+                objectsInView.RemoveAll(obj => obj == null);
                 movementDirection = DetermineMovementDirection();
                 timePassed = 0f;
             }
@@ -174,9 +174,12 @@ public class AnotherAgentController : MonoBehaviour
                 var direction = Quaternion.AngleAxis(randomDirection, Vector3.up) * transform.forward;
                 navMeshAgent.SetDestination(transform.position + direction * 10f);
             }
+            //remove any destroyed objects from the objects in view list
+            objectsInView.RemoveAll(obj => obj == null);
             //Check if we come within 10 units of any objects in view then add the, to the visited objects array, if they don't already exist
             foreach (var obj in objectsInView.Where(obj => Vector3.Distance(transform.position, obj.transform.position) <= 10f).Where(obj => !visitedObjects.Contains(obj)))
             {
+
                 if (visitedObjects.Contains(obj)) 
                     continue;
                 visitedObjects.Add(obj);
@@ -186,7 +189,21 @@ public class AnotherAgentController : MonoBehaviour
             }
         
         }
+    public List<GameObject> FindAllActiveGameObjects()
+    {
+        GameObject[] allObjects = FindObjectsOfType<GameObject>(); // Find all GameObjects in the scene
+        List<GameObject> activeObjects = new List<GameObject>();
 
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.activeInHierarchy) // Check if the GameObject is active in the hierarchy
+            {
+                activeObjects.Add(obj);
+            }
+        }
+
+        return activeObjects;
+    }
         private bool ObjectSeen(GameObject obj)
         {
             var planes = GeometryUtility.CalculateFrustumPlanes(agentCamera);
@@ -196,10 +213,9 @@ public class AnotherAgentController : MonoBehaviour
         {
             // Update objectsInView based on the camera's FOV
             //localObjs = Physics.OverlapSphere(transform.position,100f);
-            objs = UnityEngine.Object.FindObjectsOfType<GameObject>();
+            
+            objs = FindAllActiveGameObjects().ToArray();
 
-            // if (timePassed % 5f <= 0.2f)
-            //{
             objectsInView = new List<GameObject>();
             //  Debug.Log("Updating objects in view");
             // }
@@ -210,7 +226,6 @@ public class AnotherAgentController : MonoBehaviour
 
             // if (!Physics.Raycast(rayOrigin, rayDirection, out hit)) return;
             // if (hit.collider.gameObject.name.Contains("Terrain")) return;
-            objs = UnityEngine.Object.FindObjectsOfType<GameObject>();
 
             foreach (var obj in objs)
             {

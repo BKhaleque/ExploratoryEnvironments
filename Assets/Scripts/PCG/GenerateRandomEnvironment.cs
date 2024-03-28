@@ -28,7 +28,7 @@ public class GenerateRandomEnvironment : MonoBehaviour
     private AssetAreaSpawner smallAssetSpawner;
     public GameObject[] assetsToSpawn;
 
-    void Start()
+    void Awake()
     {
         smallAssetSpawner = GetComponent<AssetAreaSpawner>();
         landmarkSpawner = GetComponent<AssetAreaSpawner>();
