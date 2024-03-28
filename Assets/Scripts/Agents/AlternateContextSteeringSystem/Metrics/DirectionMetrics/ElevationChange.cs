@@ -18,7 +18,7 @@ public class ElevationChange : DirectionMetric
     void Start()
     {
         //lastElevation = agentTransform.position.y;
-        terrain = GameObject.Find("Terrain");
+        terrain = GameObject.Find("Generator");
         vertices = terrain.GetComponent<MeshFilter>().mesh.vertices;
     }
 

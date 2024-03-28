@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 public class RaycastAssetAligner : MonoBehaviour
 {
     //public float raycastDistance = 100f;
-    public GameObject assetToSpawn;
+    private GameObject assetToSpawn;
     
     private float minY;
     private float maxY;
@@ -12,6 +13,7 @@ public class RaycastAssetAligner : MonoBehaviour
 
     void Start()
     {
+        assetToSpawn = this.gameObject;
         PositionRaycast();
     }
 

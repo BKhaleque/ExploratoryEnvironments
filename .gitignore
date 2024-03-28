@@ -70,3 +70,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+.idea/.idea.ExploratoryEnvironments/.idea/workspace.xml
+.idea/.idea.ExploratoryEnvironments/.idea/copilot/chatSessions/xd.lck
+.idea/.idea.ExploratoryEnvironments/.idea/vcs.xml
+.idea/.idea.ExploratoryEnvironments/.idea/copilot/chatSessions/00000000000.xd
