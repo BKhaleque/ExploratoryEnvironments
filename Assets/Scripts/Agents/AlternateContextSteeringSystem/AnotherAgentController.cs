@@ -196,6 +196,7 @@ public class AnotherAgentController : MonoBehaviour
         {
             // Update objectsInView based on the camera's FOV
             //localObjs = Physics.OverlapSphere(transform.position,100f);
+            objs = UnityEngine.Object.FindObjectsOfType<GameObject>();
 
             // if (timePassed % 5f <= 0.2f)
             //{
@@ -209,6 +210,8 @@ public class AnotherAgentController : MonoBehaviour
 
             // if (!Physics.Raycast(rayOrigin, rayDirection, out hit)) return;
             // if (hit.collider.gameObject.name.Contains("Terrain")) return;
+            objs = UnityEngine.Object.FindObjectsOfType<GameObject>();
+
             foreach (var obj in objs)
             {
                 if (obj.gameObject.name.Contains("Terrain") || obj.gameObject.name.Contains("Wall") || obj.gameObject.name.Contains("Agent") || !obj.gameObject.activeSelf) continue;
@@ -324,7 +327,7 @@ public class AnotherAgentController : MonoBehaviour
             return score; // Placeholder value
         }
 
-        Vector3 FindHighestInterestDirection(Dictionary<Vector3, float> interestMap)
+        private Vector3 FindHighestInterestDirection(Dictionary<Vector3, float> interestMap)
         {
             var highestInterestDirections = new List<Vector3>();
             // Find the direction with the highest interest value
@@ -346,15 +349,9 @@ public class AnotherAgentController : MonoBehaviour
             }
 
             // Debug.Log(highestInterestDirection);
-            if (highestInterestDirections.Count > 1)
-            {
-                //return the direction which is closest to the current direction
-                if (randomInertia)
-                    return highestInterestDirections[UnityEngine.Random.Range(0, highestInterestDirections.Count)];
-                else
-                    return highestInterestDirections.OrderBy(dir => Vector3.Angle(dir, navMeshAgent.velocity)).First();
-            }
+            if (highestInterestDirections.Count <= 1) return highestInterestDirection;
+            //return the direction which is closest to the current direction
+            return randomInertia ? highestInterestDirections[UnityEngine.Random.Range(0, highestInterestDirections.Count)] : highestInterestDirections.OrderBy(dir => Vector3.Angle(dir, navMeshAgent.velocity)).First();
 
-            return highestInterestDirection;
         }
 }

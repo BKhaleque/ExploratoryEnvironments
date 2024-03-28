@@ -323,6 +323,9 @@ GameObject:
   - component: {fileID: 1013229765}
   - component: {fileID: 1013229766}
   - component: {fileID: 1013229767}
+  - component: {fileID: 1013229769}
+  - component: {fileID: 1013229768}
+  - component: {fileID: 1013229770}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -358,6 +361,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exploratoryAgent: {fileID: 8788333565202296929, guid: 770bc7d6b85bebd4ab462ceca4060631, type: 3}
+  assetsToSpawn:
+  - {fileID: 1486726653596827074, guid: daf661d478fbcbf4791f00721500cb43, type: 3}
+  - {fileID: 4114348814130154171, guid: c185f4228ecc7b14cb47ae816197d6b4, type: 3}
+  - {fileID: 6352184942146035110, guid: 47ded181e73460047bae5118c0254d3e, type: 3}
+  - {fileID: 7116149066112205175, guid: aca4c69ba2792044da19860502518138, type: 3}
+  - {fileID: 2594766243793620232, guid: 4d1f930728eb81f499eefd1f6d4db221, type: 3}
 --- !u!64 &1013229764
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -459,6 +468,56 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013229759}
   m_Mesh: {fileID: 0}
+--- !u!114 &1013229768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013229759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98e5bb7325e13845865d94462d44ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  regionSize: {x: 1, y: 1}
+  rejectionSamples: 30
+  displayRadius: 1
+  prefTree: {fileID: 5142532879768883847, guid: 5983c8a04c0e73047a6c860b9cd9aaad, type: 3}
+  points: []
+--- !u!114 &1013229769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013229759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a924c87f5f99f4ca68f855836bf058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assetsToSpread: []
+  numAssetsToSpawn: 10
+  assetXSpread: 10
+  assetYSpread: 0
+  assetZSpread: 10
+  hasSpawned: 0
+--- !u!114 &1013229770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013229759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366db09f2fd70ce46b2dc68b9c4336fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 100
+  assetToSpawn: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

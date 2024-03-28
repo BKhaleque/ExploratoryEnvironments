@@ -2,7 +2,7 @@
 
 public class RaycastAssetAligner : MonoBehaviour
 {
-    public float raycastDistance = 100f;
+    //public float raycastDistance = 100f;
     public GameObject assetToSpawn;
     
     private float minY;

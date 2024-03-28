@@ -11,15 +11,28 @@ public class GenerateRandomEnvironment : MonoBehaviour
     // Start is called before the first frame update
 
     private Vector3[] vertices;
-    private float curMaxY;
-    private float curMinY;
+    private float curMaxY = float.MaxValue;
+    private float curMinY = float.MinValue;
     private Mesh meshToRender;
     private NavMeshSurface surface;
     GameObject [] allObjects;
     MeshFilter meshFilter;
+    private TestPS forestSpawner;
+    private AssetAreaSpawner landmarkSpawner;
+
+    private int score;
+
+
+    //public GameObject emptyHolder;
     public GameObject exploratoryAgent;
+    private AssetAreaSpawner smallAssetSpawner;
+    public GameObject[] assetsToSpawn;
+
     void Start()
     {
+        smallAssetSpawner = GetComponent<AssetAreaSpawner>();
+        landmarkSpawner = GetComponent<AssetAreaSpawner>();
+        forestSpawner = FindObjectOfType<TestPS>();
         Random.InitState(0);
         meshToRender = new Mesh();
 
@@ -39,6 +52,7 @@ public class GenerateRandomEnvironment : MonoBehaviour
         GetComponent<MeshFilter>().mesh = meshToRender;
         meshFilter = GetComponent<MeshFilter>();
         surface.BuildNavMesh();
+        SpawnAssets(mesh);
         GameObject.Instantiate(exploratoryAgent, new Vector3(50, 1, 50), Quaternion.identity);
     }
 
@@ -173,7 +187,6 @@ public class GenerateRandomEnvironment : MonoBehaviour
             vert++;
         }
 
-       // SpawnAssets(mesh);
         return triangles;
         
     }
@@ -190,6 +203,45 @@ public class GenerateRandomEnvironment : MonoBehaviour
         
         //Debug.Log("Mesh Rendered");
     }
-    
-    
+    private void SpawnAssets(Environment_Genome mesh)
+    {
+        mesh.poissonDiscParams = new PoissonDiscParams(Random.Range(30, 350),0,Random.Range(30, 350),Random.Range(0, 200),assetsToSpawn, Random.Range(0, 350), 350, Random.Range(7, 12));
+
+        forestSpawner.radius = mesh.poissonDiscParams.forestRadius;
+        forestSpawner.regionSize.y = mesh.poissonDiscParams.forestYSize;
+        forestSpawner.regionSize.x = mesh.poissonDiscParams.forestXSize;
+        smallAssetSpawner.assetXSpread = mesh.poissonDiscParams.assetXSpread;
+        smallAssetSpawner.assetZSpread = mesh.poissonDiscParams.assetZSpread;
+        smallAssetSpawner.assetYSpread = mesh.poissonDiscParams.assetYSpread;
+        smallAssetSpawner.numAssetsToSpawn = mesh.poissonDiscParams.numOfAssetsToSpawn;
+        smallAssetSpawner.assetsToSpread = assetsToSpawn;
+        landmarkSpawner.assetXSpread = mesh.poissonDiscParams.assetXSpread;
+        landmarkSpawner.assetZSpread = mesh.poissonDiscParams.assetZSpread;
+        landmarkSpawner.assetYSpread = mesh.poissonDiscParams.assetYSpread;
+       
+        for (var i = 0; i < smallAssetSpawner.numAssetsToSpawn; i++)
+        {
+            smallAssetSpawner.SpreadAssets();
+        }
+       
+        smallAssetSpawner.hasSpawned = true;
+       
+        for (var i = 0; i < landmarkSpawner.numAssetsToSpawn; i++)
+        {
+            landmarkSpawner.SpreadAssets();
+        }
+        landmarkSpawner.hasSpawned = true;
+            
+        forestSpawner.spawnTrees();
+
+
+    }
+    public float GetMaxY()
+    {
+        return curMaxY;
+    }
+    public float GetMinY()
+    {
+        return curMinY;
+    }
 }

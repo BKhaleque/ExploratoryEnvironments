@@ -15,15 +15,15 @@ public class AssetAreaSpawner : MonoBehaviour
 
     public bool hasSpawned;
 
-    private Evaluate _evaluate;
-
+    //private Evaluate _evaluate;
+    private GenerateRandomEnvironment _evaluate;
 
     [SerializeField]
     //private MeshGenerator meshGenerator;
 
     void Start()
     {
-        _evaluate = FindObjectOfType<Evaluate>();
+        _evaluate = GetComponent<GenerateRandomEnvironment>();
     }
     
     void LateUpdate()
@@ -87,10 +87,10 @@ public class AssetAreaSpawner : MonoBehaviour
 
         return terrainSize;
     }
-
+    
     public void SpreadAssets()
     {
-        _evaluate = FindObjectOfType<Evaluate>();
+        _evaluate = GetComponent<GenerateRandomEnvironment>();
         var randposition = new Vector3(Random.Range(0f, assetXSpread), 1f, Random.Range(0f, assetZSpread));  //define the positions in the space
 
         var ray = new Ray(new Vector3(randposition.x, _evaluate.GetMaxY()-1, randposition.z), Vector3.down);
