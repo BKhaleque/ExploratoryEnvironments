@@ -254,7 +254,6 @@ public class AnotherAgentController : MonoBehaviour
 
         Dictionary<Vector3, float> CalculateDirectionInterestMap(List<GameObject> objects)
         {
-            var directions = 0;
             //  Sample directions around the agent that are in the camera frustrum, we can use the metrics to calculate the interest value for each direction
             interestMap = new Dictionary<Vector3, float>();
             // Initialize the interest map make sure the directions are in the camera frustrum (We want 36 directions)
@@ -263,7 +262,6 @@ public class AnotherAgentController : MonoBehaviour
                 var angle = i * 5f;
                 // var direction = Quaternion.AngleAxis(angle, Vector3.up) * transform.forward;
                 if (Vector3.Angle(agentCamera.transform.forward, Quaternion.AngleAxis(angle, Vector3.up) * agentCamera.transform.forward) > agentCamera.fieldOfView) continue;
-                directions++;
                 var direction = Quaternion.AngleAxis(angle, Vector3.up) * agentCamera.transform.forward;
                 //Debug.DrawRay(transform.position, direction);
 

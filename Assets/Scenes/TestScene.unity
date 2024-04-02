@@ -480,10 +480,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98e5bb7325e13845865d94462d44ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
-  regionSize: {x: 1, y: 1}
+  radius: 10
+  regionSize: {x: 350, y: 350}
   rejectionSamples: 30
-  displayRadius: 1
+  displayRadius: 0.5
   prefTree: {fileID: 5142532879768883847, guid: 5983c8a04c0e73047a6c860b9cd9aaad, type: 3}
   points: []
 --- !u!114 &1013229769
@@ -516,8 +516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366db09f2fd70ce46b2dc68b9c4336fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 100
-  assetToSpawn: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

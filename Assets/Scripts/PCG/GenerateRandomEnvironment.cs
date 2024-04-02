@@ -33,7 +33,7 @@ public class GenerateRandomEnvironment : MonoBehaviour
         smallAssetSpawner = GetComponent<AssetAreaSpawner>();
         landmarkSpawner = GetComponent<AssetAreaSpawner>();
         forestSpawner = FindObjectOfType<TestPS>();
-        Random.InitState(0);
+        //Random.InitState(0);
         meshToRender = new Mesh();
 
         meshToRender = new Mesh();
