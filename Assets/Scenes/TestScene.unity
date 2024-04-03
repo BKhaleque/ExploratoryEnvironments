@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 1013229769}
   - component: {fileID: 1013229768}
   - component: {fileID: 1013229770}
+  - component: {fileID: 1013229771}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -360,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3a8c6c4a2fe88244ad9aa6db46699f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshToRender: {fileID: 0}
   exploratoryAgent: {fileID: 8788333565202296929, guid: 770bc7d6b85bebd4ab462ceca4060631, type: 3}
   assetsToSpawn:
   - {fileID: 1486726653596827074, guid: daf661d478fbcbf4791f00721500cb43, type: 3}
@@ -438,7 +440,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 49f2ecb08a0c38140b335a0a1f7f66f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -498,7 +500,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a924c87f5f99f4ca68f855836bf058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assetsToSpread: []
+  assetsToSpread:
+  - {fileID: 5142532879768883847, guid: 5983c8a04c0e73047a6c860b9cd9aaad, type: 3}
+  - {fileID: 5023827496289606453, guid: a79279818571b6848a9ccb8dcb36dd2c, type: 3}
+  - {fileID: 283491861412978150, guid: 32ae7b155a654c14cb792554efca6837, type: 3}
+  - {fileID: 2464754855653894261, guid: d7375139d18121f4daae96053a84e4c9, type: 3}
+  - {fileID: 3490930834329824882, guid: 08bdb42a7413db34e867890b29e20ecd, type: 3}
+  - {fileID: 2831074819202018473, guid: 221bd8eee906efe489a9f1c8aad0ec09, type: 3}
+  - {fileID: 3490930834329824882, guid: 08bdb42a7413db34e867890b29e20ecd, type: 3}
+  - {fileID: 5614180682871777939, guid: 2196e66c52d25ac469e55fb8f4d54d4a, type: 3}
   numAssetsToSpawn: 10
   assetXSpread: 10
   assetYSpread: 0
@@ -516,6 +526,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366db09f2fd70ce46b2dc68b9c4336fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1013229771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013229759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9681eec0c23e504dbad1ba7fb9683d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  regionSize: {x: 1, y: 1}
+  rejectionSamples: 30
+  displayRadius: 1
+  Assets:
+  - {fileID: 3759753885466561612, guid: 430aea17f65ddba419bf9f426b17128f, type: 3}
+  - {fileID: 629542536758182806, guid: 7ca2fa2809968cf47852232e5d4a6e43, type: 3}
+  - {fileID: 7116149066112205175, guid: aca4c69ba2792044da19860502518138, type: 3}
+  points: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

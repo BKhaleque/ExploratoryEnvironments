@@ -227,7 +227,7 @@ MonoBehaviour:
   objectsInView: []
   visitedObjects: []
   lengthOfView: 80
-  randomInertia: 0
+  randomInertia: 1
   ObjectMetrics:
   - {fileID: 4609987348175891714}
   DirectionMetrics: []
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d079a2f2da34f43a4c682e55c161c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0
+  weight: 1
   inverse: 0
   checkDistance: 80
 --- !u!114 &8962772384728979698
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e335494ef4e407e45aa6a1f1d9279474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0
+  weight: 1
   inverse: 0
 --- !u!114 &6524650444562419306
 MonoBehaviour:
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2c1c651facaf941bf61c1d4e409c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0
+  weight: 1
   inverse: 0
 --- !u!114 &8285534467885794070
 MonoBehaviour:
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09260a436a8d44fa3715c6f87347f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0
+  weight: 1
   inverse: 0
   checkRadius: 80
 --- !u!114 &1664526060016883382
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca61e5d81ac8b24ea569172fedf11f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0
+  weight: 1
 --- !u!114 &9029017316642988517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76eef24a2fa2e2b4baa66a2889567a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0
+  weight: 1
 --- !u!114 &4518241216755564404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb14d4c8316944349b84d4ea5a838840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0
+  weight: 1
 --- !u!114 &4609987348175891714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,4 +363,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c52f44d2fcf455084b6b262fbba1051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 0
