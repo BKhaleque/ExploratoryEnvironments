@@ -21,6 +21,8 @@ public class GenerateRandomEnvironment : MonoBehaviour
 
     private int score;
 
+    private float timePassed = 0;
+
 
     //public GameObject emptyHolder;
     public GameObject exploratoryAgent;
@@ -32,12 +34,17 @@ public class GenerateRandomEnvironment : MonoBehaviour
         smallAssetSpawner = GetComponent<AssetPS>();
         forestSpawner = FindObjectOfType<TestPS>();
         //Random.InitState(0);
+        spawnMesh();
+    }
+    
+    void spawnMesh()
+    {
         meshToRender = new Mesh();
-
         meshToRender = new Mesh();
         surface = GetComponent<NavMeshSurface>();
         var mesh = new Environment_Genome();
-        
+        smallAssetSpawner.hasSpawned = false;
+        forestSpawner.hasSpawned = false;
         mesh.totalNumOfHighPoints = Random.Range(0, 50);
         mesh.totalNumOfMidPoints = Random.Range(0, 50);
         mesh.totalXSize = 350;
@@ -57,7 +64,23 @@ public class GenerateRandomEnvironment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timePassed = timePassed + Time.deltaTime;
+        //after 3 minutes, destroy the mesh, all spawned assets and the agent and regenerate the environment and agent
+        if (timePassed > 10)
+        {
+            //reset meshfilter and meshcollider
+            meshFilter.mesh = null;
+            GetComponent<MeshCollider>().sharedMesh = null;
+            //destroy all objects except the environment generator and directional light
+            allObjects = FindObjectsOfType<GameObject>();
+            foreach (var obj in allObjects)
+            {
+                if(obj.name != "Directional Light" && obj.name != "Generator")
+                    Destroy(obj);
+            }
+            spawnMesh();
+            timePassed = 0;
+        }
     }
     
     private void DrawMesh(Environment_Genome mesh)
@@ -232,8 +255,8 @@ public class GenerateRandomEnvironment : MonoBehaviour
         
         forestSpawner.spawnTrees();
         smallAssetSpawner.spawnTrees();
-        Debug.Log(forestSpawner.radius);
-        Debug.Log(smallAssetSpawner.radius);
+      //  Debug.Log(forestSpawner.radius);
+       // Debug.Log(smallAssetSpawner.radius);
 
     }
     public float GetMaxY()

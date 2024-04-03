@@ -99,6 +99,6 @@ public class ElevationChange : DirectionMetric
     void OnDisable()
     {
         // Output the elevation change preference score
-        Debug.Log("Elevation Change Score: " + GetScore());
+    //    Debug.Log("Elevation Change Score: " + GetScore());
     }
 }

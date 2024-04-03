@@ -10,7 +10,7 @@ public class AssetPS : MonoBehaviour
 
     private float minY;
     private float maxY = 100f;
-    private bool hasSpawned;
+    public bool hasSpawned;
 
     [SerializeField]
    // private MeshGenerator meshGenerator;
