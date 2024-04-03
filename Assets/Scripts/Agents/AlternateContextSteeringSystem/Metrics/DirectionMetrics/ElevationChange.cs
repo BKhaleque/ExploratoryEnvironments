@@ -19,7 +19,7 @@ public class ElevationChange : DirectionMetric
     {
         //lastElevation = agentTransform.position.y;
         terrain = GameObject.Find("Generator");
-        vertices = terrain.GetComponent<MeshFilter>().mesh.vertices;
+        vertices = terrain.GetComponent<GenerateRandomEnvironment>().meshToRender.vertices;
     }
 
     // Update is called once per frame
