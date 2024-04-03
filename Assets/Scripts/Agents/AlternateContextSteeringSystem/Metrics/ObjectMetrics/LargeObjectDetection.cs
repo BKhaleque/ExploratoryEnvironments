@@ -30,6 +30,10 @@ public class LargeObjectDetection : ObjectMetric
             //get largest object in view
             foreach (var objInView in objectsInView)
             {
+                if (objInView == null)
+                {
+                    continue;
+                }
                 if (largestObjectSeen == null)
                 {
                     largestObjectSeen = objInView;

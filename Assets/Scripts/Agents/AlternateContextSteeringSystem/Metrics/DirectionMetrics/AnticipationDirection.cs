@@ -29,7 +29,7 @@ public class AnticipationDirection : DirectionMetric
             
             var angle = Vector3.Angle(this.transform.position, hit.transform.position);
 
-            if(hit.transform.gameObject.name.Contains("Terrain") || hit.transform.gameObject.name.Contains("Agent") || hit.transform.gameObject.activeSelf == false|| hit.transform.gameObject.name.Contains("Wall"))
+            if(hit.transform.gameObject.name.Contains("Terrain") || hit.transform.gameObject.name.Contains("Agent") || hit.transform.gameObject.activeSelf == false|| hit.transform.gameObject.name.Contains("Wall") || hit.transform.gameObject == null)
                 return;
             float distanceToAgent = Vector3.Distance(hit.transform.position, gameObject.transform.position);
             float agentHeight = gameObject.transform.localScale.y;

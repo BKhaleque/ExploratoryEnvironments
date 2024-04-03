@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 4518241216755564404}
   - component: {fileID: 4609987348175891714}
   - component: {fileID: 6851647523748191488}
+  - component: {fileID: 2265284327035410749}
   m_Layer: 0
   m_Name: Exploratory Agent
   m_TagString: Untagged
@@ -230,7 +231,7 @@ MonoBehaviour:
   lengthOfView: 80
   randomInertia: 1
   ObjectMetrics:
-  - {fileID: 4609987348175891714}
+  - {fileID: 1664526060016883382}
   DirectionMetrics: []
   makeObjectsGoThrough: 0
 --- !u!195 &8791178763689201936
@@ -380,3 +381,18 @@ MonoBehaviour:
   gridWidth: 350
   gridHeight: 350
   cellSize: 50
+--- !u!114 &2265284327035410749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8788333565202296929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3441741c629574eb99dd78d091afa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentCamera: {fileID: 7382022701848416542}
+  allObjectsInScene: []
+  inspectionDistanceThreshold: 10

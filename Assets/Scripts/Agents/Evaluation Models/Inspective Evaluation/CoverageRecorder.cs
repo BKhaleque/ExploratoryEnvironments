@@ -38,7 +38,7 @@ public class CoverageRecorder : MonoBehaviour
             {
                 exploredGrid[x, y] = true;
                 exploredCells++;
-                Debug.Log($"Explored {exploredCells} out of {totalCells} cells. Coverage: {GetExplorationPercentage()}%");
+               // Debug.Log($"Explored {exploredCells} out of {totalCells} cells. Coverage: {GetExplorationPercentage()}%");
             }
         }
     }

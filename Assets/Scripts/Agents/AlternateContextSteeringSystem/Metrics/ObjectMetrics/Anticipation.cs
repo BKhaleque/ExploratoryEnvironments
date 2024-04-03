@@ -22,7 +22,7 @@ public partial class Anticipation : ObjectMetric
 
         score = 0f;
        // var angle = Vector3.Angle(this.transform.position, gameObject.transform.position);
-       if(obj.transform.gameObject.name.Contains("Terrain") || obj.transform.gameObject.name.Contains("Agent") || obj.transform.gameObject.activeSelf == false)
+       if(obj.transform.gameObject.name.Contains("Terrain") || obj.transform.gameObject.name.Contains("Agent") || obj.transform.gameObject.activeSelf == false || obj.transform.gameObject == null)
            return;
         //calculate the penumbra and umbra sizes of the object
         // var penumbra = obj.transform.localScale.x * Mathf.Tan(angle);

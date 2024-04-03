@@ -14,21 +14,37 @@ public class Checklist : MonoBehaviour
     
     private void Start()
     {
+        updateObjects();
+    }
+
+    public void updateObjects()
+    {
         allObjectsInScene = GameObject.FindObjectsOfType<GameObject>().ToList();
         //remove inactive objects
-        allObjectsInScene.RemoveAll(obj => !obj.activeSelf);
         //remove agent
+        // allObjectsInScene.RemoveAll(obj => obj.activeInHierarchy == false);
+
         allObjectsInScene.RemoveAll(obj => obj.name.Contains("Agent"));
         allObjectsInScene.RemoveAll(obj => obj.name.Contains("Wall"));
         allObjectsInScene.RemoveAll(obj => obj.name.Contains("Recorders"));
         allObjectsInScene.RemoveAll(obj => obj.name.Contains("Terrain"));
         allObjectsInScene.RemoveAll(obj => obj.name.Contains("Directional Light"));
+        allObjectsInScene.RemoveAll(obj => obj.name.Contains("Generator"));
+        //remove all inactive objects
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        updateObjects();
+        allObjectsInScene.RemoveAll(obj => obj == null);
+
         UpdateSeenObjects();
+        //every 2 seconds print the inspection score
+        // if (Time.frameCount % 120 == 0)
+        // {
+        //     Debug.Log(CalculateInspectionScore());
+        // }
     }
 
     void UpdateSeenObjects()
@@ -47,6 +63,7 @@ public class Checklist : MonoBehaviour
     {
         seenObjects.Clear();
         closestDistances.Clear();
+        allObjectsInScene.Clear();
     }
 
     bool IsObjectInCameraFrustum(GameObject obj)
@@ -75,6 +92,6 @@ public class Checklist : MonoBehaviour
             }
         }
 
-        return allObjectsInScene.Count > 0 ? (float)inspectedObjectCount / allObjectsInScene.Count : 0f;
+        return allObjectsInScene.Count > 0 ? ((float)inspectedObjectCount / allObjectsInScene.Count)*100f : 0f;
     }
 }

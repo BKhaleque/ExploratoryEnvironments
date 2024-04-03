@@ -32,8 +32,11 @@ public class GroupDetection : ObjectMetric
         //
         score = 0f;
         otherObjs = Physics.OverlapSphere(obj.transform.position, 8f);
+        //remove inactive objects
         foreach (var otherObj in otherObjs)
         {
+            if (otherObj.gameObject == null)
+                continue;
             if(otherObj.gameObject.transform.parent != null)
                 continue;
             if(otherObj.gameObject.Equals(this.gameObject))

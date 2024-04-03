@@ -28,7 +28,7 @@ public class Openness : DirectionMetric
         if (Physics.Raycast(this.transform.position, direction, out hit, checkRadius))
         {
             //first check we don't hit terrain
-            if (!hit.collider.gameObject.name.Contains("Terrain"))
+            if (!hit.collider.gameObject.name.Contains("Generator"))
             {
                 //get distance of hit
                 float distance = Vector3.Distance(this.transform.position, hit.point);

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 public class GenerateRandomEnvironment : MonoBehaviour
@@ -19,10 +20,11 @@ public class GenerateRandomEnvironment : MonoBehaviour
     MeshFilter meshFilter;
     private TestPS forestSpawner;
 
+    private Environment_Genome[] InitialMeshes;
     private int score;
 
     private float timePassed = 0;
-
+    private int counter = 0;
 
     //public GameObject emptyHolder;
     public GameObject exploratoryAgent;
@@ -31,28 +33,43 @@ public class GenerateRandomEnvironment : MonoBehaviour
 
     void Awake()
     {
+        //initialise 10 meshes
+        InitialMeshes = new Environment_Genome[10];
+        for (var i = 0; i < 10; i++)
+        {
+            InitialMeshes[i] = new Environment_Genome();
+            //random parameters
+            InitialMeshes[i].totalNumOfHighPoints = Random.Range(0, 50);
+            InitialMeshes[i].totalNumOfMidPoints = Random.Range(0, 50);
+            InitialMeshes[i].totalXSize = 350;
+            InitialMeshes[i].totalZSize = 350;
+            InitialMeshes[i].midValueModifier = Random.Range(0f, 10f);
+            InitialMeshes[i].highValueModifier = Random.Range(0f, 10f);
+            InitialMeshes[i].hillsProp = Random.Range(0f, 1f);
+            InitialMeshes[i].areaOfInfluence = Random.Range(0f, 40f);
+            InitialMeshes[i].poissonDiscParams = new PoissonDiscParams(Random.Range(7, 12),350,Random.Range(30, 350),Random.Range(0, 200),assetsToSpawn, Random.Range(0, 350), 350, Random.Range(7, 12));
+        }
         smallAssetSpawner = GetComponent<AssetPS>();
         forestSpawner = FindObjectOfType<TestPS>();
         //Random.InitState(0);
-        spawnMesh();
+        spawnMesh(InitialMeshes[0]);
     }
     
-    void spawnMesh()
+    void spawnMesh(Environment_Genome mesh)
     {
-        meshToRender = new Mesh();
-        meshToRender = new Mesh();
+         meshToRender = new Mesh();
         surface = GetComponent<NavMeshSurface>();
-        var mesh = new Environment_Genome();
-        smallAssetSpawner.hasSpawned = false;
-        forestSpawner.hasSpawned = false;
-        mesh.totalNumOfHighPoints = Random.Range(0, 50);
-        mesh.totalNumOfMidPoints = Random.Range(0, 50);
-        mesh.totalXSize = 350;
-        mesh.totalZSize = 350;
-        mesh.midValueModifier = Random.Range(0f, 10f);
-        mesh.highValueModifier = Random.Range(0f, 10f);
-        mesh.hillsProp = Random.Range(0f, 1f);
-        mesh.areaOfInfluence = Random.Range(0f, 40);
+        // var mesh = new Environment_Genome();
+         smallAssetSpawner.hasSpawned = false;
+         forestSpawner.hasSpawned = false;
+        // mesh.totalNumOfHighPoints = Random.Range(0, 50);
+        // mesh.totalNumOfMidPoints = Random.Range(0, 50);
+        // mesh.totalXSize = 350;
+        // mesh.totalZSize = 350;
+        // mesh.midValueModifier = Random.Range(0f, 10f);
+        // mesh.highValueModifier = Random.Range(0f, 10f);
+        // mesh.hillsProp = Random.Range(0f, 1f);
+        // mesh.areaOfInfluence = Random.Range(0f, 40);
         DrawMesh(mesh);
         GetComponent<MeshFilter>().mesh = meshToRender;
         meshFilter = GetComponent<MeshFilter>();
@@ -62,14 +79,17 @@ public class GenerateRandomEnvironment : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         timePassed = timePassed + Time.deltaTime;
         //after 3 minutes, destroy the mesh, all spawned assets and the agent and regenerate the environment and agent
-        if (!(timePassed > 180)) return;
+        if (!(timePassed > 20)) return;
+        counter++;
         //get agent coverage of the environment
         CoverageRecorder cv = exploratoryAgent.GetComponent<CoverageRecorder>();
         cv.InitializeGrid();
+        Checklist inspection = exploratoryAgent.GetComponent<Checklist>();
+        inspection.resetCheckList();
         //reset meshfilter and meshcollider
         meshFilter.mesh = null;
         GetComponent<MeshCollider>().sharedMesh = null;
@@ -79,39 +99,15 @@ public class GenerateRandomEnvironment : MonoBehaviour
         {
             if(obj.name != "Directional Light" && obj.name != "Generator")
                 Destroy(obj);
+            
         }
-        spawnMesh();
+        Resources.UnloadUnusedAssets();
+        System.GC.Collect();
+        
+        spawnMesh(InitialMeshes[counter]);
         timePassed = 0;
     }
 
-    // public float GetCoverage()
-    // {
-    //     //get the agent coverage of the environment
-    //     var coverage = 0f;
-    //     
-    //     var agentPos = exploratoryAgent.transform.position;
-    //     var agentX = (int)agentPos.x;
-    //     var agentZ = (int)agentPos.z;
-    //     var agentY = (int)agentPos.y;
-    //     var totalPoints = 0;
-    //     var coveredPoints = 0;
-    //     for (var z = 0; z < 350; z++)
-    //     {
-    //         for (var x = 0; x < 350; x++)
-    //         {
-    //             var point = new Vector3(x, 0, z);
-    //             var dist = Vector3.Distance(agentPos, point);
-    //             if (dist < 10)
-    //             {
-    //                 totalPoints++;
-    //                 if (agentY - vertices[z * 350 + x].y < 1)
-    //                 {
-    //                     coveredPoints++;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
     private void DrawMesh(Environment_Genome mesh)
         {
             var flag = 0;
@@ -284,7 +280,7 @@ public class GenerateRandomEnvironment : MonoBehaviour
         
         forestSpawner.spawnTrees();
         smallAssetSpawner.spawnTrees();
-      //  Debug.Log(forestSpawner.radius);
+
        // Debug.Log(smallAssetSpawner.radius);
 
     }
