@@ -32,7 +32,7 @@ public class RunExperiments : MonoBehaviour
     //Dictionary<string, Metric[]> metricDict = new Dictionary<string, Metric[]>();
 
     private NoveltySearchEvaluator ng;
-    private CoverageAndDistribution cd;
+    //private CoverageAndDistribution cd;
     private Checklist ch;
 
     private int randomDirectionCounter = 0;
@@ -48,7 +48,7 @@ public class RunExperiments : MonoBehaviour
     {
         ag = GetComponent<AnotherAgentController>();
         ng = GetComponent<NoveltySearchEvaluator>();
-        cd = GetComponent<CoverageAndDistribution>();
+        //cd = GetComponent<CoverageAndDistribution>();
         var rg = GetComponent<RegionTimeMeasure>();
         rg.initialiseDict();
         pt = GetComponent<PositionTracker>();
@@ -287,7 +287,7 @@ public class RunExperiments : MonoBehaviour
     private void writeEvaluation(string metric)
     {
         ng = GetComponent<NoveltySearchEvaluator>();
-        cd = GetComponent<CoverageAndDistribution>();
+        //cd = GetComponent<CoverageAndDistribution>();
         ch = GetComponent<Checklist>();
         //check if file exists to write to
         pt.WritePositionsToFile();
@@ -296,7 +296,7 @@ public class RunExperiments : MonoBehaviour
 
         //write to file
         StreamWriter writer = new StreamWriter(path, true);
-        writer.WriteLine("Coverage: " + cd.getCoverageAndDistribution() + ", Inspection: " +
+        writer.WriteLine("Inspection: " +
                          ch.CalculateInspectionScore());
         foreach (var entry in ng.PositionObjectViews)
         {
@@ -306,7 +306,7 @@ public class RunExperiments : MonoBehaviour
         writer.Close();
         //reset ng,ch and cd
         ng.resetNoveltySearchEvaluator();
-        cd.resetCoverageAndDistribution();
+        //cd.resetCoverageAndDistribution();
         ch.resetCheckList();
     }
     private void ResetAgent(string metric, RegionTimeMeasure rg)

@@ -66,23 +66,52 @@ public class GenerateRandomEnvironment : MonoBehaviour
     {
         timePassed = timePassed + Time.deltaTime;
         //after 3 minutes, destroy the mesh, all spawned assets and the agent and regenerate the environment and agent
-        if (timePassed > 10)
+        if (!(timePassed > 180)) return;
+        //get agent coverage of the environment
+        CoverageRecorder cv = exploratoryAgent.GetComponent<CoverageRecorder>();
+        cv.InitializeGrid();
+        //reset meshfilter and meshcollider
+        meshFilter.mesh = null;
+        GetComponent<MeshCollider>().sharedMesh = null;
+        //destroy all objects except the environment generator and directional light
+        allObjects = FindObjectsOfType<GameObject>();
+        foreach (var obj in allObjects)
         {
-            //reset meshfilter and meshcollider
-            meshFilter.mesh = null;
-            GetComponent<MeshCollider>().sharedMesh = null;
-            //destroy all objects except the environment generator and directional light
-            allObjects = FindObjectsOfType<GameObject>();
-            foreach (var obj in allObjects)
-            {
-                if(obj.name != "Directional Light" && obj.name != "Generator")
-                    Destroy(obj);
-            }
-            spawnMesh();
-            timePassed = 0;
+            if(obj.name != "Directional Light" && obj.name != "Generator")
+                Destroy(obj);
         }
+        spawnMesh();
+        timePassed = 0;
     }
-    
+
+    // public float GetCoverage()
+    // {
+    //     //get the agent coverage of the environment
+    //     var coverage = 0f;
+    //     
+    //     var agentPos = exploratoryAgent.transform.position;
+    //     var agentX = (int)agentPos.x;
+    //     var agentZ = (int)agentPos.z;
+    //     var agentY = (int)agentPos.y;
+    //     var totalPoints = 0;
+    //     var coveredPoints = 0;
+    //     for (var z = 0; z < 350; z++)
+    //     {
+    //         for (var x = 0; x < 350; x++)
+    //         {
+    //             var point = new Vector3(x, 0, z);
+    //             var dist = Vector3.Distance(agentPos, point);
+    //             if (dist < 10)
+    //             {
+    //                 totalPoints++;
+    //                 if (agentY - vertices[z * 350 + x].y < 1)
+    //                 {
+    //                     coveredPoints++;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
     private void DrawMesh(Environment_Genome mesh)
         {
             var flag = 0;

@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e09beeba-3121-4536-9af7-e778cbfe7549" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ExploratoryEnvironments/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExploratoryEnvironments/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ExploratoryEnvironments/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExploratoryEnvironments/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ExploratoryEnvironments/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExploratoryEnvironments/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Agents/AlternateContextSteeringSystem/AnotherAgentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Agents/AlternateContextSteeringSystem/AnotherAgentController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Exploratory Agent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Exploratory Agent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Agents/AlternateContextSteeringSystem/RunExperiments.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Agents/AlternateContextSteeringSystem/RunExperiments.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Agents/Evaluation Models/Inspective Evaluation/CoverageAndDistribution.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Agents/Evaluation Models/Inspective Evaluation/CoverageAndDistribution.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PCG/GenerateRandomEnvironment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PCG/GenerateRandomEnvironment.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,28 +28,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Bobby\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Bobby\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Bobby\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/Users/bobbykhaleque/Library/Application Support/JetBrains/Rider2023.2/resharper-host/DecompilerCache",
+      "/Users/bobbykhaleque/Library/Application Support/JetBrains/Rider2023.2/resharper-host/SourcesCache",
+      "/Users/bobbykhaleque/.local/share/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.16f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Bobby\Documents\ExploratoryEnvironments -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Bobby\Documents\ExploratoryEnvironments" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -57,7 +58,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.16f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\Bobby\Documents\ExploratoryEnvironments -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Bobby\Documents\ExploratoryEnvironments" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -97,6 +98,7 @@
       <workItem from="1711542518516" duration="225000" />
       <workItem from="1711604087071" duration="7331000" />
       <workItem from="1711993622472" duration="399000" />
+      <workItem from="1712140043549" duration="1929000" />
     </task>
     <servers />
   </component>
