@@ -287,6 +287,7 @@ public class AnotherAgentController : MonoBehaviour
           //  Debug.Log(directions);
         
             //Object focused metric logic
+            
             foreach (var obj in objects)
             {
                 if (visitedObjects.Contains(obj)) continue;
@@ -299,7 +300,7 @@ public class AnotherAgentController : MonoBehaviour
                 }
                 directionToObj = closestDir;
                 
-
+                
                 
                 
                 // Debug.Log(closestDir);
@@ -330,7 +331,12 @@ public class AnotherAgentController : MonoBehaviour
         {
             // Implement logic to calculate interest value for each object using the attached metrics and their weights TODO
             // Can use anticipation, group detection
+
             var score = 0f;
+            if (obj == null)
+            {
+                return score;
+            }
             foreach (var metric in ObjectMetrics)
             {
                 metric.evaluateObj(obj);

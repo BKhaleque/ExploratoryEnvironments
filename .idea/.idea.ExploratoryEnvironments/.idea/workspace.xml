@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e09beeba-3121-4536-9af7-e778cbfe7549" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ExploratoryEnvironments/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ExploratoryEnvironments/.idea/copilot/chatSessions/blobs/version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ExploratoryEnvironments/.idea/copilot/chatSessions/xd.lck" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ExploratoryEnvironments/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExploratoryEnvironments/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Exploratory Agent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Exploratory Agent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Agents/AlternateContextSteeringSystem/RunExperiments.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Agents/AlternateContextSteeringSystem/RunExperiments.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Agents/Evaluation Models/Inspective Evaluation/CoverageAndDistribution.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Agents/Evaluation Models/Inspective Evaluation/CoverageAndDistribution.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PCG/GenerateRandomEnvironment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PCG/GenerateRandomEnvironment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Agents/AlternateContextSteeringSystem/AnotherAgentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Agents/AlternateContextSteeringSystem/AnotherAgentController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Agents/AlternateContextSteeringSystem/Metrics/ObjectMetrics/GroupDetection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Agents/AlternateContextSteeringSystem/Metrics/ObjectMetrics/GroupDetection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Agents/Evaluation Models/Inspective Evaluation/Checklist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Agents/Evaluation Models/Inspective Evaluation/Checklist.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +20,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/LayoutRebuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/SpecializedCollections/IndexedSet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Editor/EventSystem/EventTriggerRemoveDuringExecution.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Editor/UnityEvent/UnityEventInvoke.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/TextEditor/TextEditorBackspaceDelete.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -42,15 +50,15 @@
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "/Users/bobbykhaleque/Library/Application Support/JetBrains/Rider2023.2/resharper-host/DecompilerCache",
-      "/Users/bobbykhaleque/Library/Application Support/JetBrains/Rider2023.2/resharper-host/SourcesCache",
-      "/Users/bobbykhaleque/.local/share/Symbols/src"
+      "C:\\Users\\Bobby\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Bobby\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\Bobby\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="/Applications/Unity/Unity.app/Contents/MacOS/Unity" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.16f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Bobby\Documents\ExploratoryEnvironments -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Bobby\Documents\ExploratoryEnvironments" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -58,7 +66,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="/Applications/Unity/Unity.app/Contents/MacOS/Unity" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.16f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\Bobby\Documents\ExploratoryEnvironments -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Bobby\Documents\ExploratoryEnvironments" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -99,6 +107,7 @@
       <workItem from="1711604087071" duration="7331000" />
       <workItem from="1711993622472" duration="399000" />
       <workItem from="1712140043549" duration="1929000" />
+      <workItem from="1712150238862" duration="8580000" />
     </task>
     <servers />
   </component>

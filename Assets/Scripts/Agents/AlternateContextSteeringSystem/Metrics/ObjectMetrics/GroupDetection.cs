@@ -31,7 +31,7 @@ public class GroupDetection : ObjectMetric
         //If it is in a group/pair, add to the score
         //
         score = 0f;
-        otherObjs = Physics.OverlapSphere(obj.transform.position, 8f);
+        otherObjs = Physics.OverlapSphere(obj.transform.position, 5f);
         //remove inactive objects
         foreach (var otherObj in otherObjs)
         {

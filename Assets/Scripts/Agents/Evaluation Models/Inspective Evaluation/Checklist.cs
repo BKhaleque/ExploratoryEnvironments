@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Agents.AlternateContextSteeringSystem;
 using UnityEngine;
 
 public class Checklist : MonoBehaviour
@@ -9,11 +10,13 @@ public class Checklist : MonoBehaviour
     public List<GameObject> allObjectsInScene; // List of all objects in the scene
     public float inspectionDistanceThreshold; // Threshold distance for inspection
 
-    private HashSet<GameObject> seenObjects = new HashSet<GameObject>();
+    private List<GameObject> seenObjects = new List<GameObject>();
     private Dictionary<GameObject, float> closestDistances = new Dictionary<GameObject, float>();
+    private AnotherAgentController ag;
     
     private void Start()
     {
+        ag = GetComponent<AnotherAgentController>();
         updateObjects();
     }
 
@@ -23,7 +26,7 @@ public class Checklist : MonoBehaviour
         //remove inactive objects
         //remove agent
         // allObjectsInScene.RemoveAll(obj => obj.activeInHierarchy == false);
-
+        
         allObjectsInScene.RemoveAll(obj => obj.name.Contains("Agent"));
         allObjectsInScene.RemoveAll(obj => obj.name.Contains("Wall"));
         allObjectsInScene.RemoveAll(obj => obj.name.Contains("Recorders"));
@@ -36,10 +39,10 @@ public class Checklist : MonoBehaviour
 
     void FixedUpdate()
     {
-        updateObjects();
-        allObjectsInScene.RemoveAll(obj => obj == null);
-
-        UpdateSeenObjects();
+        //updateObjects();
+        //allObjectsInScene.RemoveAll(obj => obj == null);
+        seenObjects = ag.objectsInView;
+        //UpdateSeenObjects();
         //every 2 seconds print the inspection score
         // if (Time.frameCount % 120 == 0)
         // {
@@ -47,17 +50,17 @@ public class Checklist : MonoBehaviour
         // }
     }
 
-    void UpdateSeenObjects()
-    {
-        foreach (var obj in allObjectsInScene)
-        {
-            if (IsObjectInCameraFrustum(obj))
-            {
-                seenObjects.Add(obj);
-                UpdateClosestDistance(obj);
-            }
-        }
-    }
+    // void UpdateSeenObjects()
+    // {
+    //     foreach (var obj in allObjectsInScene)
+    //     {
+    //         if (IsObjectInCameraFrustum(obj))
+    //         {
+    //             seenObjects.Add(obj);
+    //             UpdateClosestDistance(obj);
+    //         }
+    //     }
+    // }
     
     public void resetCheckList()
     {
