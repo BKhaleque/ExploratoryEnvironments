@@ -20,9 +20,11 @@ public class NoveltySearchEvaluator : MonoBehaviour
    private Dictionary<GameObject,String> objectTypeDict = new Dictionary<GameObject, string>();
    public float timePassed = 0f;
 
+   private AnotherAgentController ag;
     // Call this method when the agent sees objects
     private void Start()
     {
+        ag = GetComponent<AnotherAgentController>();
         objs = FindObjectsOfType<GameObject>().ToList();
         //initialise positionObjectViews by splitting the map into a grid
         //get the size of the map
@@ -66,7 +68,7 @@ public class NoveltySearchEvaluator : MonoBehaviour
 
         // if (timePassed % 5f <= 0.2f)
         //{
-        objectsInView = new List<GameObject>();
+        objectsInView = ag.objectsInView;
         //  Debug.Log("Updating objects in view");
         // }
         // RaycastHit hit;
@@ -76,10 +78,15 @@ public class NoveltySearchEvaluator : MonoBehaviour
 
         // if (!Physics.Raycast(rayOrigin, rayDirection, out hit)) return;
         // if (hit.collider.gameObject.name.Contains("Terrain")) return;
+        //remove all null objects
+        objs.RemoveAll(obj => obj == null);
         foreach (var obj in objs.Where(obj => !obj.gameObject.name.Contains("Terrain") && !obj.gameObject.name.Contains("Wall") && !obj.gameObject.name.Contains("Agent") && obj.gameObject.activeSelf).Where(obj => !objectsInView.Contains(obj.gameObject)))
         {
-            if(ObjectSeen(obj.gameObject))
+            
+            if (ObjectSeen(obj.gameObject))
                 objectsInView.Add(obj.gameObject);
+                
+
             if(Vector3.Distance(obj.transform.position, transform.position) > lengthOfView) continue;
         }
     }
@@ -90,6 +97,8 @@ public class NoveltySearchEvaluator : MonoBehaviour
         //check if object is in dictionary
         foreach (var obj in objectsInView)
         {
+            if(!objectTypeDict.ContainsKey(obj))
+                objectTypeDict.Add(obj,obj.tag);
             if (!TypesSeen.ContainsKey(objectTypeDict[obj]))
             {
 

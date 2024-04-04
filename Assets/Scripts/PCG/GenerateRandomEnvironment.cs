@@ -21,6 +21,8 @@ public class GenerateRandomEnvironment : MonoBehaviour
     private TestPS forestSpawner;
 
     private Environment_Genome[] InitialMeshes;
+    private List<Environment_Genome> goodMeshes;
+    private List<Environment_Genome> badMeshes;
     private int score;
 
     private float timePassed = 0;

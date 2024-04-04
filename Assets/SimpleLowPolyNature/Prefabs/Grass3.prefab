@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3097332169774936826}
   m_Layer: 0
   m_Name: Grass3
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -110,8 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366db09f2fd70ce46b2dc68b9c4336fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 100
-  assetToSpawn: {fileID: 0}
 --- !u!114 &3097332169774936826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,5 +122,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366db09f2fd70ce46b2dc68b9c4336fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 100
-  assetToSpawn: {fileID: 7116149066112205175}
