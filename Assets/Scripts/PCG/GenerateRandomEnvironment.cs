@@ -21,8 +21,8 @@ public class GenerateRandomEnvironment : MonoBehaviour
     private TestPS forestSpawner;
 
     private Environment_Genome[] InitialMeshes;
-    private List<Environment_Genome> goodMeshes;
-    private List<Environment_Genome> badMeshes;
+    private List<Environment_Genome> goodMeshes = new List<Environment_Genome>();
+    private List<Environment_Genome> badMeshes = new List<Environment_Genome>();
     private int score;
 
     private float timePassed = 0;
@@ -86,11 +86,63 @@ public class GenerateRandomEnvironment : MonoBehaviour
         timePassed = timePassed + Time.deltaTime;
         //after 3 minutes, destroy the mesh, all spawned assets and the agent and regenerate the environment and agent
         if (!(timePassed > 20)) return;
+        var cv = exploratoryAgent.GetComponent<CoverageRecorder>();
+        var inspection = exploratoryAgent.GetComponent<Checklist>();
+        //check if inspection is > 20%
+        if (cv.GetExplorationPercentage() >= 5 && cv.GetExplorationPercentage()<= 80 && inspection.CalculateInspectionScore() >= 0.01f && inspection.CalculateInspectionScore() <= 0.9f)
+        {
+            goodMeshes.Add(InitialMeshes[counter]);
+        }
+        else
+        {
+            badMeshes.Add(InitialMeshes[counter]);
+        }
+        
+        if (counter ==9)
+        {
+            Debug.Log("Generating new Pop");
+            counter = 0;
+            var newPop = new Environment_Genome[10];
+    
+            //Do crossover and mutation to create a new population of meshes until the population is full
+            for (var i = 0; i < 10; i++)
+            {
+                //take 2 random meshes from the goodMeshes or badmeshes list and perform crossover
+                Environment_Genome mesh1;
+                Environment_Genome mesh2;
+                //check if the lists are empty
+                if (goodMeshes.Count < 2)
+                {
+                    //take 2 random meshes from the badMeshes list and perform crossover
+                    mesh1 = badMeshes[Random.Range(0, badMeshes.Count)];
+                    mesh2 = badMeshes[Random.Range(0, badMeshes.Count)];
+                }
+                else
+                {
+                    mesh1 = goodMeshes[Random.Range(0, goodMeshes.Count)];
+                    mesh2 = goodMeshes[Random.Range(0, goodMeshes.Count)];
+                }
+
+                //make sure they are not the same
+                while (mesh1.Equals(mesh2))
+                {
+                    mesh2 = goodMeshes[Random.Range(0, goodMeshes.Count)];
+                }
+    
+                newPop[i] = crossOver(mesh1, mesh2);
+            }
+
+            InitialMeshes = newPop;
+            badMeshes = new List<Environment_Genome>();
+            goodMeshes = new List<Environment_Genome>();
+        }
+        Debug.Log(counter);
         counter++;
         //get agent coverage of the environment
-        CoverageRecorder cv = exploratoryAgent.GetComponent<CoverageRecorder>();
+
+
+
         cv.InitializeGrid();
-        Checklist inspection = exploratoryAgent.GetComponent<Checklist>();
         inspection.resetCheckList();
         //reset meshfilter and meshcollider
         meshFilter.mesh = null;
@@ -105,11 +157,37 @@ public class GenerateRandomEnvironment : MonoBehaviour
         }
         Resources.UnloadUnusedAssets();
         System.GC.Collect();
-        
+
         spawnMesh(InitialMeshes[counter]);
         timePassed = 0;
     }
 
+    private Environment_Genome crossOver(Environment_Genome mesh1, Environment_Genome mesh2)
+    {
+        
+        var child = new Environment_Genome();
+        //using a random chance pick a parameter from either mesh1 or mesh2
+        var rand = Random.Range(0, 2);
+        child.totalNumOfHighPoints = rand == 0 ? mesh1.totalNumOfHighPoints : mesh2.totalNumOfHighPoints;
+        rand = Random.Range(0, 2);
+        child.totalNumOfMidPoints = rand == 0 ? mesh1.totalNumOfMidPoints : mesh2.totalNumOfMidPoints;
+        rand = Random.Range(0, 2);
+        child.totalXSize = rand == 0 ? mesh1.totalXSize : mesh2.totalXSize;
+        rand = Random.Range(0, 2);
+        child.totalZSize = rand == 0 ? mesh1.totalZSize : mesh2.totalZSize;
+        rand = Random.Range(0, 2);
+        child.midValueModifier = rand == 0 ? mesh1.midValueModifier : mesh2.midValueModifier;
+        rand = Random.Range(0, 2);
+        child.highValueModifier = rand == 0 ? mesh1.highValueModifier : mesh2.highValueModifier;
+        rand = Random.Range(0, 2);
+        child.hillsProp = rand == 0 ? mesh1.hillsProp : mesh2.hillsProp;
+        rand = Random.Range(0, 2);
+        child.areaOfInfluence = rand == 0 ? mesh1.areaOfInfluence : mesh2.areaOfInfluence;
+        rand = Random.Range(0, 2);
+        child.poissonDiscParams = rand == 0 ? mesh1.poissonDiscParams : mesh2.poissonDiscParams;
+        return child;
+        
+    }
     private void DrawMesh(Environment_Genome mesh)
         {
             var flag = 0;

@@ -43,7 +43,7 @@ public class CoverageRecorder : MonoBehaviour
         }
     }
 
-    float GetExplorationPercentage()
+    public float GetExplorationPercentage()
     {
         return (exploredCells / (float)totalCells) * 100;
     }
