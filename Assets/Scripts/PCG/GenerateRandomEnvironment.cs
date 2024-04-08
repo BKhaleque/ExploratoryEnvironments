@@ -33,6 +33,8 @@ public class GenerateRandomEnvironment : MonoBehaviour
     private AssetPS smallAssetSpawner;
     public GameObject[] assetsToSpawn;
 
+    public float explorationtime;
+
     void Awake()
     {
         //initialise 10 meshes
@@ -85,7 +87,7 @@ public class GenerateRandomEnvironment : MonoBehaviour
     {
         timePassed = timePassed + Time.deltaTime;
         //after 3 minutes, destroy the mesh, all spawned assets and the agent and regenerate the environment and agent
-        if (!(timePassed > 20)) return;
+        if (!(timePassed > explorationtime)) return;
         var cv = exploratoryAgent.GetComponent<CoverageRecorder>();
         var inspection = exploratoryAgent.GetComponent<Checklist>();
         //check if inspection is > 20%
@@ -124,10 +126,10 @@ public class GenerateRandomEnvironment : MonoBehaviour
                 }
 
                 //make sure they are not the same
-                while (mesh1.Equals(mesh2))
-                {
-                    mesh2 = goodMeshes[Random.Range(0, goodMeshes.Count)];
-                }
+                // while (mesh1.Equals(mesh2))
+                // {
+                //     mesh2 = goodMeshes[Random.Range(0, goodMeshes.Count)];
+                // }
     
                 newPop[i] = crossOver(mesh1, mesh2);
             }

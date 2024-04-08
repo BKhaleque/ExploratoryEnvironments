@@ -369,6 +369,7 @@ MonoBehaviour:
   - {fileID: 6352184942146035110, guid: 47ded181e73460047bae5118c0254d3e, type: 3}
   - {fileID: 7116149066112205175, guid: aca4c69ba2792044da19860502518138, type: 3}
   - {fileID: 2594766243793620232, guid: 4d1f930728eb81f499eefd1f6d4db221, type: 3}
+  explorationtime: 20
 --- !u!64 &1013229764
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -486,6 +487,7 @@ MonoBehaviour:
   regionSize: {x: 350, y: 350}
   rejectionSamples: 30
   displayRadius: 0.5
+  hasSpawned: 0
   prefTree: {fileID: 5142532879768883847, guid: 5983c8a04c0e73047a6c860b9cd9aaad, type: 3}
   points: []
 --- !u!114 &1013229769
@@ -542,6 +544,7 @@ MonoBehaviour:
   regionSize: {x: 1, y: 1}
   rejectionSamples: 30
   displayRadius: 1
+  hasSpawned: 0
   Assets:
   - {fileID: 3759753885466561612, guid: 430aea17f65ddba419bf9f426b17128f, type: 3}
   - {fileID: 629542536758182806, guid: 7ca2fa2809968cf47852232e5d4a6e43, type: 3}
