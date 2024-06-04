@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e09beeba-3121-4536-9af7-e778cbfe7549" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ExploratoryEnvironments/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExploratoryEnvironments/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PCG/GenerateRandomEnvironment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PCG/GenerateRandomEnvironment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PCG/Evaluate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PCG/Evaluate.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PCG/Evolve.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PCG/Evolve.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PCG/GenerateRandomEnvironment.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PCG/GenerateRandomEnvironment.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +112,7 @@
       <workItem from="1712235229514" duration="1712000" />
       <workItem from="1712338302980" duration="1519000" />
       <workItem from="1712555102362" duration="2629000" />
+      <workItem from="1713789929618" duration="618000" />
     </task>
     <servers />
   </component>
@@ -117,24 +123,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/PCG/GenerateRandomEnvironment.cs</url>
-          <line>171</line>
-          <properties documentPath="C:\Users\Bobby\Documents\ExploratoryEnvironments\Assets\Scripts\PCG\GenerateRandomEnvironment.cs" initialLine="147" containingFunctionPresentation="Method 'crossOver'">
-            <startOffsets>
-              <option value="6556" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6586" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
